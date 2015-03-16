@@ -23,6 +23,22 @@ module.exports = function(environment) {
     authorizer: 'simple-auth-authorizer:token'
   }
 
+  ENV['simple-auth-token'] = {
+    authorizer: 'simple-auth-authorizer:token',
+    serverTokenEndpoint:  '/sessions/token',
+    identificationField:  'email',
+    passwordField:        'password',
+    tokenPropertyName:    'token',
+    authorizationPrefix:  'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {},
+    // JWT specific vv
+    refreshAccessTokens:        true,
+    serverTokenRefreshEndpoint: '/sessions/token-refresh/',
+    tokenExpireName: 'exp',
+    timeFactor: 1  // example - set to "1000" to convert incoming seconds to milliseconds.
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
