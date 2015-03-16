@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "/sessions/token" => "sessions#token"
+  post "/sessions/token_refresh" => "sessions#token_refresh"
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
