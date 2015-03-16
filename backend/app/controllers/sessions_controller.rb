@@ -2,9 +2,10 @@ class SessionsController < ApplicationController
 
   def token
     user = User.authenticate(params[:email], params[:password])
-    puts params
+
     if user
-      render json: user, status: 200
+      payload = { user: user.jwt_params }
+      render json: { token: JWT.encode(payload, Rails.application.secrets.secret_key_base) }, status: 200
     else
       render json: {errors: ["Unauthorized"]}, status: 401
     end

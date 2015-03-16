@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
       nil
     end
   end
+
+  def jwt_params
+    self.slice(:id, :email, :name, :created_at)
+  end
 end
