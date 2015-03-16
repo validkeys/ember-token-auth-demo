@@ -1,0 +1,1 @@
+Rails.application.config.secret_token = ENV["SECRET_TOKEN"] || "f75c73f5daf59788200ed8a777dabd4c9c9a2496aa943e6ee1a36b8b0e02ac2a8b7188c4f77dbeb0dc78ea4448e1f098c546886e8428c705fa3e6a43c109662d"

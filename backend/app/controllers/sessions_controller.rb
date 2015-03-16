@@ -1,11 +1,14 @@
 class SessionsController < ApplicationController
 
+  skip_before_filter :authenticate!, only: [:token]
+
   def token
     user = User.authenticate(params[:email], params[:password])
-
     if user
       payload = { user: user.jwt_params }
-      render json: { token: JWT.encode(payload, Rails.application.secrets.secret_key_base) }, status: 200
+      render json: { 
+        token: JWT.encode(payload, Rails.configuration.secret_token)
+      }, status: 200
     else
       render json: {errors: ["Unauthorized"]}, status: 401
     end
