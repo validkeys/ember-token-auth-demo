@@ -5,6 +5,20 @@
 _Resources_:
 * (ember-cli-simple-auth-token)[https://github.com/jpadilla/ember-cli-simple-auth-token]
 
+### Logic
+
+User enters email / password on frontend
+Front end POSTS to /sessions which looks up the user /password
+If found, returns a JWT token containing the user data
+Front end then stores the JWT token and adds it to the Authorization Bearer headed on each subsequent request
+The backend then has a before_filter :authenticate that looks for the JWT
+Returns 401 if not found
+If found, JWT.decodes it and sets the current user as the user passed in the token
+
+---
+
+### Steps
+
 
 1. Start by installing ember-simple auth
 
