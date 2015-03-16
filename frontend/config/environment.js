@@ -34,7 +34,7 @@ module.exports = function(environment) {
     headers: {},
     // JWT specific vv
     refreshAccessTokens:        true,
-    serverTokenRefreshEndpoint: '/sessions/token-refresh/',
+    serverTokenRefreshEndpoint: '/sessions/token_refresh/',
     tokenExpireName: 'exp',
     timeFactor: 1  // example - set to "1000" to convert incoming seconds to milliseconds.
   }
