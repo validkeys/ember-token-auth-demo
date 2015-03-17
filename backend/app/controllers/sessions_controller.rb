@@ -6,26 +6,23 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       set_current_user user
-      generated_token = generate_token(user)
-      render json: { token: generated_token[:token], exp: generated_token[:payload][:exp] }, status: 200
+      render json: { token: generate_token(user)}, status: 200
     else
       render json: {errors: ["Unauthorized"]}, status: 401
     end
   end
 
   def token_refresh
-    logger.debug("/token_refresh reached")
-    render json: {msg: "Unauthorized"}, status: 401
+    render json: { token: generate_token(@current_user)}, status: 200
   end
 
   private
 
   def generate_token(user)
-    payload = { user: user.jwt_params, exp: 30.days.from_now.to_i }
-    {
-      token:    JWT.encode(payload, Rails.configuration.secret_token),
-      payload:  payload
-    }
+    # exp = 30.days.from_now.to_i
+    exp = (Time.now + 15).to_i
+    payload = { user: user.jwt_params, exp: exp }
+    JWT.encode(payload, Rails.configuration.secret_token)
   end
 
 end

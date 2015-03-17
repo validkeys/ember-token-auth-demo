@@ -35,9 +35,9 @@ class ApplicationController < ActionController::Base
     begin
       set_current_user_from_token(decoded_token)
     rescue JWT::ExpiredSignature
-      render json: {error: "JWT Expired"}, status: 500
+      render json: {error: "JWT Expired"}, status: 401
     rescue JWT::DecodeError
-      render json: {error: "JWT Decode Error"}, status: 500
+      render json: {error: "JWT Decode Error"}, status: 401
     end
   end
 end
