@@ -32,3 +32,8 @@ ember generate ember-cli-simple-auth
 npm install --save-dev ember-cli-simple-auth-token
 ember generate simple-auth-token
 ```
+
+3. Install Torii
+```
+npm install torii --save-dev
+```
