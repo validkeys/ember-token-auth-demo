@@ -16,12 +16,21 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    torii: {
+      providers: {
+        'facebook-connect': {
+          appId: "1582075365398773",
+          scope: "email, public_profile"
+        }
+      }
     }
   };
 
   ENV['simple-auth'] = {
     authorizer: 'simple-auth-authorizer:token'
-  }
+  };
 
   ENV['simple-auth-token'] = {
     authorizer: 'simple-auth-authorizer:token',
@@ -43,7 +52,7 @@ module.exports = function(environment) {
     // the default is 1 but I am passing back 
     // seconds, so this needed to be changed to 1000
     timeFactor:                 1000  // example - set to "1000" to convert incoming seconds to milliseconds.
-  }
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
