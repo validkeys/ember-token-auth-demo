@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def generate_token(user)
     # exp = 30.days.from_now.to_i
-    exp = (Time.now + 15).to_i
+    exp     = (Time.now + 15).to_i
     payload = { user: user.jwt_params, exp: exp }
     JWT.encode(payload, Rails.configuration.secret_token)
   end

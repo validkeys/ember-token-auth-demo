@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
 
   def decoded_token
-    JWT.decode(http_auth_header, Rails.configuration.secret_token)    
+    JWT.decode(http_auth_header, Rails.configuration.secret_token, true, {leeway: 10})    
   end
   hide_action :decoded_token
 
