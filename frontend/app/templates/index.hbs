@@ -1,0 +1,5 @@
+<h1>Index Route</h1>
+
+<strong>Authenticated? {{session.isAuthenticated}}</strong>
+{{#link-to "authenticated"}}User 1{{/link-to}}
+<button {{action "invalidateSession"}}>Logout</button>
