@@ -25,18 +25,24 @@ module.exports = function(environment) {
 
   ENV['simple-auth-token'] = {
     authorizer: 'simple-auth-authorizer:token',
-    serverTokenEndpoint:  '/sessions/token',
-    identificationField:  'email',
-    passwordField:        'password',
-    tokenPropertyName:    'token',
-    authorizationPrefix:  'Bearer ',
-    authorizationHeaderName: 'Authorization',
+    serverTokenEndpoint:      '/sessions/token',
+    identificationField:      'email',
+    passwordField:            'password',
+    tokenPropertyName:        'token',
+    authorizationPrefix:      'Bearer ',
+    authorizationHeaderName:  'Authorization',
+    authenticationRoute:      'login',
+    routeAfterAuthentication: 'index',
     headers: {},
     // JWT specific vv
     refreshAccessTokens:        true,
     serverTokenRefreshEndpoint: '/sessions/token_refresh/',
-    tokenExpireName: 'exp',
-    timeFactor: 1  // example - set to "1000" to convert incoming seconds to milliseconds.
+    tokenExpireName:            'exp',
+
+    // I originally screwed up here.
+    // the default is 1 but I am passing back 
+    // seconds, so this needed to be changed to 1000
+    timeFactor:                 1000  // example - set to "1000" to convert incoming seconds to milliseconds.
   }
 
   if (environment === 'development') {
