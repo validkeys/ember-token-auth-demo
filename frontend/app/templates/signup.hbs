@@ -1,0 +1,9 @@
+<h2>Signup</h2>
+{{#link-to "login"}}Back To Login{{/link-to}}
+
+<form {{action "signup" on="submit"}}>
+  <div>{{input type="text" value=email placeholder="Enter your email"}}</div>
+  <div>{{input type="text" value=name placeholder="Enter your name"}}</div>
+  <div>{{input type="text" value=password placeholder="Enter your password"}}</div>
+  <button>Signup</button>
+</form>

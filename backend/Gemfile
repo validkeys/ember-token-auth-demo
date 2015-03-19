@@ -38,4 +38,5 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'jwt'
+gem 'ember_token_auth', path: "../../ember_token_auth"
+gem 'active_model_serializers', '~> 0.8.3'
